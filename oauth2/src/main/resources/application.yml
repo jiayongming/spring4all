@@ -1,0 +1,55 @@
+server:
+  port: 8088
+spring:
+  application:
+      name: oauth-server
+  jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: validate
+        naming:
+          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+          strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      database: mysql
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+  thymeleaf:
+      cache: false
+  redis:
+      database: 0
+      host: localhost
+      pool:
+        max-active: 300
+        max-idle: 100
+        max-wait: 3000
+        min-idle:  0
+      port: 6379
+      timeout: 60000
+      password: gzw
+  session:
+      store-type: redis
+  datasource:
+    url: jdbc:mysql://localhost:3306/gzw?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+eureka:
+  client:
+    service-url.defaultZone: http://eureka-server:gzw@localhost:1001/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  basic:
+    enabled: false
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+
+
