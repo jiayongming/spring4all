@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>auth2</name>
+	<name>auth</name>
 	<description>oauth2 project for Spring Boot</description>
 
 	<parent>

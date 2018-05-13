@@ -123,16 +123,16 @@ $(document).ready(function(){
 	})
 	//进入登录
 	$('#login_page').click(function(){
-		location.href = "../html/login.html";
+		location.href = "../../templates/login.html";
 	})
 	$('#res_page').click(function(){
-		location.href = "../html/login.html";
+		location.href = "../../templates/login.html";
 	})
 	$('#login_page_index').click(function(){
-		location.href = "html/login.html";
+		location.href = "../../templates/login.html";
 	})
 	$('#res_page_index').click(function(){
-		location.href = "html/register.html";
+		location.href = "../../templates/register.html";
 	})
 	//回到顶部
 	$(".rocket").click(function () {

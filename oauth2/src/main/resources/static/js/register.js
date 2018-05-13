@@ -118,7 +118,7 @@ $(document).ready(function(){
                         });
                     });
                     setTimeout(function(){
-                        location.href = '../login.html';
+                        location.href = '../../templates/login.html';
                     },3000)
 
                 }else {
@@ -245,7 +245,7 @@ $(document).ready(function(){
 	}
 	//已有账号，立即登录
 	$('#registerc').click(function(){
-		location.href="../html/login.html";
+		location.href="../../templates/login.html";
 	});
 	$('.form_text_ipt input').focus(function(){
 		$(this).addClass('inputFocus').siblings().removeClass('inputFocus');
