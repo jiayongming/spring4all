@@ -61,7 +61,7 @@ import javax.annotation.PostConstruct;
 
     @Bean
     @Autowired
-    public ApprovalStore approvalStore(TokenStore tokenStore) throws Exception {
+    public ApprovalStore approvalStore(TokenStore tokenStore) {
         TokenApprovalStore store = new TokenApprovalStore();
         store.setTokenStore(tokenStore);
         return store;
@@ -82,10 +82,11 @@ import javax.annotation.PostConstruct;
                 .withClient("fbed1d1b4b1449daa4bc49397cbe2350")
                 .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
                 .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
-                .scopes("read", "write", "trust")
+                .scopes("read","write")
                 .secret("fbed1d1b4b1449daa4bc49397cbe2350")
                 .accessTokenValiditySeconds(120)//Access token is only valid for 2 minutes.
-                .refreshTokenValiditySeconds(600);//Refresh token is only valid for 10 minutes.
+                .refreshTokenValiditySeconds(600)//Refresh token is only valid for 10 minutes.
+                .redirectUris("http://localhost:8080/session");
 
     }
 
@@ -101,7 +102,7 @@ import javax.annotation.PostConstruct;
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         security
                 .allowFormAuthenticationForClients()
                 .tokenKeyAccess("permitAll()")

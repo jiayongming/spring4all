@@ -19,7 +19,7 @@ public class SessionController {
         return map;
     }
 
-    @RequestMapping(value = "/sessions", method = RequestMethod.GET)
+    @RequestMapping(value = "/session", method = RequestMethod.GET)
     public Object sessions (HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
         map.put("sessionId", request.getSession().getId());

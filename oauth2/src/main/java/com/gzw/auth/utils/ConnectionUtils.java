@@ -8,7 +8,7 @@ public class ConnectionUtils {
     public static Connection getConn() {
         Connection connection = null;
         String driver = "com.mysql.jdbc.Driver";// 驱动程序类名
-        String url = "jdbc:mysql://localhost:3306/gzw?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
+        String url = "jdbc:mysql://52.80.202.157:3306/gzw?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
         String user = "root";
         String password = "root";
         try {

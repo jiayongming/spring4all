@@ -13,7 +13,7 @@ import java.util.Date;
  * @author qzj 2017年10月13日
  */
 @Entity
-@Table(name = "sysuser")
+@Table(name = "user")
 public class SysUser implements UserDetails,Serializable {
     @Id
     private long phone;//电话号码

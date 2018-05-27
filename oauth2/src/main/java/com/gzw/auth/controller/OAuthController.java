@@ -31,7 +31,7 @@ public class OAuthController {
             scopeList.add(scope);
         }
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("scopeList",scopeList);
+        jsonObject.put("scopes",scopeList);
         return jsonObject;
     }
 

@@ -1,8 +1,5 @@
 $(document).ready(function(){
-	var SMSAuthenticationCode;
 	var userId;
-	var urls;
-	var passWord;
 	var rememPass = false;
 	var usernames = $.cookie('usernames');
 	var passWord = $.cookie('passWord');
@@ -11,7 +8,6 @@ $(document).ready(function(){
 	$('#verificationCode').val('');
 	$('#shorMessageNum').val('');
 	$('#userId').focus();
-	//$.cookie('username', null,{ path: '/' });
 	if(usernames == '' ){
 		
 	}
@@ -41,7 +37,6 @@ $(document).ready(function(){
 	var lastUrl = document.referrer;
 	//登录
 	$('#login').click(function() {
-		var passWordcVal = $.trim($('#passWord').val());//密码
 		var verificationCodecVal = $.trim($('#verificationCode').val());//验证码
 		userId = $.trim($('#userId').val());
 		var sMobile = $.trim($('#userId').val());
@@ -99,7 +94,6 @@ $(document).ready(function(){
 		}
 	})
 	$(document).keydown(function(e) {
-		var passWordcVal = $.trim($('#passWord').val());//第一次密码
 		var verificationCodecVal = $.trim($('#verificationCode').val());//验证码
 		userId = $.trim($('#userId').val());
 		var sMobile = $.trim($('#userId').val());
@@ -188,11 +182,11 @@ $(document).ready(function(){
 				'imageCode':$('#verificationCode').val(),'username':userId,'password':password,"remember-me": isCheck
 			},
 			success: function(obj) {
-						$.cookie('phone', userId, { path: '/' });
-						scopeList = obj.scopeList;
-						auth();
+				        console.log(obj);
+						auth(obj.scopes);
 			},
 			 error: function (obj) {
+				console.log(obj);
 				var jsonMessage = eval('(' + obj.responseText + ')');
 				layui.use('layer', function(){
 					  var layer = layui.layer;
@@ -368,7 +362,7 @@ $(document).ready(function(){
 			smsOffon=!smsOffon;
 		};
 	});
-	function auth(){
+	function auth(scopes){
 		var form=$("<form>");//定义一个form表单
         $(document.body).append(form);
 		form.attr("method","post");
@@ -377,10 +371,10 @@ $(document).ready(function(){
 		inputUser.attr("type","hidden");
 		inputUser.attr("name","user_oauth_approval");
 		inputUser.attr("value","true");
-		for(var i = 0;i<scopeList.length;i++){
+		for(var i = 0;i<scopes.length;i++){
 			var input = $("<input>");
 			input.attr("type","hidden");
-			input.attr("name",""+scopeList[i]+"")
+			input.attr("name",""+scopes[i]+"")
 			input.attr("value","true");
 			form.append(input);
 		}
